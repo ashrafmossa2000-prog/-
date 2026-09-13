@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Science Quiz - اختبار العلوم</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <!-- ===== خلفية المكتب ===== -->
+    <div class="desktop-background"></div>
+
+    <!-- ===== إطار الموبايل ===== -->
+    <div class="phone-frame">
+        
+        <!-- شريط الحالة العلوي -->
+        <div class="status-bar">
+            <div class="status-left">
+                <span class="time" id="statusTime">9:41</span>
+            </div>
+            <div class="notch"></div>
+            <div class="status-right">
+                <span>📶</span>
+                <span>📡</span>
+                <span>🔋</span>
+            </div>
+        </div>
+
+        <!-- شاشة الموبايل -->
+        <div class="phone-screen">
+
+            <!-- ===== شاشة تسجيل الدخول ===== -->
+            <div id="loginScreen" class="screen active">
+                <div class="app-header">
+                    <div class="app-icon">🔐</div>
+                    <h1>منصة الاختبارات</h1>
+                    <p>إعداد: <strong>م. أشرف موسى</strong></p>
+                </div>
+
+                <div class="avatar-container">
+                    <img src="myphoto.png" alt="أشرف موسى" class="avatar" onerror="this.style.display='none'">
+                    <div class="avatar-ring"></div>
+                </div>
+
+                <div class="login-form">
+                    <div class="input-group">
+                        <span class="input-icon">👤</span>
+                        <input type="text" id="loginStudentName" placeholder="اسم الطالب الثلاثي">
+                    </div>
+
+                    <div class="input-group">
+                        <span class="input-icon">🔑</span>
+                        <input type="password" id="loginCode" placeholder="كود الدخول">
+                    </div>
+
+                    <button id="loginBtn" class="btn-primary">
+                        🚀 دخول وبدء الاختبار
+                    </button>
+
+                    <p id="loginError" class="error-msg" style="display:none;">
+                        ❌ كود الدخول أو الاسم غير صحيح
+                    </p>
+                </div>
+
+                <div class="phone-footer">
+                    <a href="tel:01110547129" class="phone-chip">📞 01110547129</a>
+                    <a href="tel:01100429783" class="phone-chip">📱 01100429783</a>
+                </div>
+            </div>
+
+            <!-- ===== شاشة البداية ===== -->
+            <div id="startScreen" class="screen" style="display:none;">
+                
+                <div class="welcome-header">
+                    <div class="welcome-avatar">
+                        <img src="myphoto.png" alt="أشرف موسى" onerror="this.style.display='none'">
+                    </div>
+                    <h2>أهلاً <span id="welcomeName">الطالب</span> 🎓</h2>
+                    <p class="subtitle">🧪 Science Quiz Pro</p>
+                </div>
+
+                <div class="menu-list">
+                    
+                    <!-- بطاقة الاختبار التفاعلي -->
+                    <div class="menu-card purple">
+                        <div class="menu-card-header">
+                            <span class="menu-icon">📚</span>
+                            <h3>الاختبار التفاعلي</h3>
+                        </div>
+
+                        <div class="input-group small">
+                            <span class="input-icon">🎓</span>
+                            <select id="gradeSelect">
+                                <option value="">اختر الصف</option>
+                                <option value="grade6">السادس الابتدائي</option>
+                                <option value="prep1">الأول الإعدادي</option>
+                                <option value="prep2">الثاني الإعدادي</option>
+                                <option value="prep3">الثالث الإعدادي</option>
+                                <option value="sec1">الأول الثانوي</option>
+                            </select>
+                        </div>
+
+                        <div class="input-group small">
+                            <span class="input-icon">📖</span>
+                            <select id="unitSelect"><option value="">اختر الوحدة</option></select>
+                        </div>
+
+                        <div class="input-group small">
+                            <span class="input-icon">📝</span>
+                            <select id="lessonSelect"><option value="">اختر الدرس</option></select>
+                        </div>
+
+                        <div class="btn-row">
+                            <button id="startBtn" class="btn-primary small-btn">🚀 ابدأ</button>
+                            <button id="printPdfBtn" class="btn-secondary small-btn">🖨️ PDF</button>
+                        </div>
+                    </div>
+
+                    <!-- بطاقة الامتحان -->
+                    <div class="menu-card green">
+                        <div class="menu-card-header">
+                            <span class="menu-icon">📝</span>
+                            <h3>الامتحانات</h3>
+                        </div>
+
+                        <div class="input-group small">
+                            <span class="input-icon">🏆</span>
+                            <select id="examSelect">
+                                <option value="">اختر الامتحان</option>
+                                <option value="grade6">السادس الابتدائي</option>
+                                <option value="prep1">الأول الإعدادي</option>
+                                <option value="prep2">الثاني الإعدادي</option>
+                                <option value="prep2_exam">الثاني الإعدادي (امتحان)</option>
+                                <option value="prep3">الثالث الإعدادي</option>
+                                <option value="sec1">الأول الثانوي</option>
+                            </select>
+                        </div>
+
+                        <button id="examStartBtn" class="btn-primary small-btn green-btn">📝 ابدأ الامتحان</button>
+
+                        <button onclick="showExamPaper()" class="btn-ghost">
+                            📄 عرض الامتحان كامل
+                        </button>
+                    </div>
+
+                </div>
+
+                <!-- اسم الطالب مخفي -->
+                <input type="hidden" id="studentName">
+            </div>
+
+            <!-- ===== شاشة الاختبار ===== -->
+            <div id="quizScreen" class="screen" style="display:none;">
+                
+                <div class="quiz-topbar">
+                    <div class="quiz-chip">
+                        👤 <span id="studentLabel"></span>
+                    </div>
+                    <div class="quiz-chip">
+                        📝 <span id="questionNumber">1</span>/<span id="questionCount">10</span>
+                    </div>
+                    <div class="quiz-chip score">
+                        ⭐ <span id="liveScore">0</span>
+                    </div>
+                </div>
+
+                <div class="progress-track">
+                    <div id="progressBar"></div>
+                </div>
+
+                <div class="question-card">
+                    <h2 id="questionText"></h2>
+                </div>
+
+                <div id="answersContainer" class="answers-container"></div>
+
+                <button id="nextBtn" class="btn-primary" style="display:none;">
+                    ➡️ السؤال التالي
+                </button>
+            </div>
+
+            <!-- ===== شاشة النتيجة ===== -->
+            <div id="resultScreen" class="screen" style="display:none;">
+                
+                <div class="result-hero">
+                    <div class="result-emoji">🎉</div>
+                    <h1>انتهى الاختبار!</h1>
+                </div>
+
+                <div class="result-card">
+                    <div class="result-row">
+                        <span>👤 الطالب</span>
+                        <strong id="resultName"></strong>
+                    </div>
+                    <div class="result-row">
+                        <span>📊 الدرجة</span>
+                        <strong id="resultScore"></strong>
+                    </div>
+                    <div class="result-row">
+                        <span>📈 النسبة</span>
+                        <strong id="resultPercent"></strong>
+                    </div>
+                    <div class="result-row">
+                        <span>⏱️ الوقت</span>
+                        <strong id="resultTime"></strong>
+                    </div>
+                    
+                    <div id="resultGrade" class="result-grade"></div>
+                </div>
+
+                <div class="result-actions">
+                    <button id="restartBtn" class="btn-primary">🔄 اختبار جديد</button>
+                    <button onclick="sendAnswers()" class="btn-success">📱 إرسال النتيجة</button>
+                </div>
+
+                <div id="teacherActions" style="display:none; margin-top:20px;">
+                    <p style="text-align:center;color:#6f42c1;font-weight:bold;">🔐 أدوات المعلم</p>
+                    <div class="result-actions">
+                        <button onclick="showWrongQuestions()" class="btn-warning small-btn">📋 الأخطاء</button>
+                        <button onclick="sendWrongQuestionsToStudent()" class="btn-success small-btn">📱 للطالب</button>
+                        <button onclick="sendFullReportToTeacher()" class="btn-purple small-btn">📤 تقرير</button>
+                        <button onclick="copyResult()" class="btn-info small-btn">📋 نسخ</button>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- شريط التنقل السفلي -->
+        <div class="bottom-nav">
+            <div class="nav-indicator"></div>
+        </div>
+
+    </div>
+
+    <script src="questions.js"></script>
+    <script src="examQuestions.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

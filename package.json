@@ -1,0 +1,26 @@
+{
+    "app_name": "Science-Quiz - Copy",
+    "author": "",
+    "devDependencies": {
+        "electron": "^43.3.0",
+        "electron-packager": "^17.1.2"
+    },
+    "license": "ISC",
+    "main": "C:\\Users\\Aspire\\Desktop\\Science-Quiz - Copy\\index.html",
+    "name": "sciencequiz",
+    "scripts": {
+        "start": "electron ."
+    },
+    "type": "commonjs",
+    "version": "1.0.0",
+    "webkit": {},
+    "window": {
+        "frame": true,
+        "id": "Science-Quiz - Copy",
+        "resizable": true,
+        "show": true,
+        "show_in_taskbar": true,
+        "title": "Science-Quiz - Copy",
+        "visible": true
+    }
+}
