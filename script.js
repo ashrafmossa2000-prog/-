@@ -31,9 +31,10 @@ const validCodes = {
    ⚠️ مهم: ضع رابط صفحة report.html بعد رفعها على الإنترنت
    مثال: https://your-site.netlify.app/report.html
    ============================================================ */
-const REPORT_PAGE_URL = 'https://YOUR-SITE.netlify.app/report.html';
 
-// عناصر شاشة الدخول
+const REPORT_PAGE_URL = 'https://USERNAME.github.io/REPO-NAME/report.html';
+
+   // عناصر شاشة الدخول
 const loginScreen = document.getElementById('loginScreen');
 const startScreen = document.getElementById('startScreen');
 const loginBtn = document.getElementById('loginBtn');
